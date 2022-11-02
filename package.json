@@ -6,7 +6,6 @@
 	"unity": "2022.1",
 	"unityRelease": "16f1",
 	"dependencies": {
-		    "com.gentlymadstudios.editorhelper": "0.1.0"
 	},
 	"keywords": [
 		"editor",
