@@ -5,6 +5,9 @@
 	"description": "Editor UI by Gentlymad Studios.",
 	"unity": "2022.1",
 	"unityRelease": "16f1",
+	"documentationUrl": "https://github.com/Gentlymad-Studios/EditorUI/blob/master/README.md",
+	"changelogUrl": "https://github.com/Gentlymad-Studios/EditorUI/blob/master/CHANGELOG.md",
+	"licensesUrl": "https://github.com/Gentlymad-Studios/EditorUI/blob/master/LICENSE.md",
 	"dependencies": {
 	},
 	"keywords": [
