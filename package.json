@@ -8,6 +8,7 @@
 	"documentationUrl": "https://github.com/Gentlymad-Studios/EditorUI/blob/master/README.md",
 	"changelogUrl": "https://github.com/Gentlymad-Studios/EditorUI/blob/master/CHANGELOG.md",
 	"licensesUrl": "https://github.com/Gentlymad-Studios/EditorUI/blob/master/LICENSE.md",
+	"custom_packageJsonLink": "https://raw.githubusercontent.com/Gentlymad-Studios/EditorUI/master/package.json",
 	"dependencies": {
 	},
 	"keywords": [
