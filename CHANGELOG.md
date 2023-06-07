@@ -13,3 +13,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [0.1.1] - 2023-03-29
 ### Added
 - UIElementsHelper
+
+## [0.1.2] - 2023-06-07
+### Added
+- add vertical and horizontal spacer to UIElementsHelper

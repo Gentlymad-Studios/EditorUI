@@ -66,5 +66,27 @@ public static class UIElementsHelper {
         ForEachProperty(ref scrollView);
 
     }
+
+    /// <summary>
+    /// Creates a Vertical Spacer
+    /// </summary>
+    /// <param name="space">Space in pixel</param>
+    /// <returns>Spacer as VisualElement</returns>
+    public static VisualElement CreateVerticalSpacer(float space) {
+        VisualElement spacer = new VisualElement();
+        spacer.style.height = space;
+        return spacer;
+    }
+
+    /// <summary>
+    /// Creates a Horizontal Spacer
+    /// </summary>
+    /// <param name="space">Space in pixel</param>
+    /// <returns>Spacer as VisualElement</returns>
+    public static VisualElement CreateHorizontalSpacer(float space) {
+        VisualElement spacer = new VisualElement();
+        spacer.style.width = space;
+        return spacer;
+    }
 }
 
