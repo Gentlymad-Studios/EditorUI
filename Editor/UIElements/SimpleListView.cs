@@ -15,7 +15,7 @@ namespace EditorUI {
         /// <summary>
         /// Default name for the item row container.
         /// </summary>
-        private const string DEFAULT_ITEMROW_CONTAINER_NAME = nameof(SimpleListView) + "_" + nameof(itemRowContainer);
+        protected const string DEFAULT_ITEMROW_CONTAINER_NAME = nameof(SimpleListView) + "_" + nameof(itemRowContainer);
 
         /// <summary>
         /// Constant value for the handle bars partial GUID.
