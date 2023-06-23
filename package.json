@@ -1,10 +1,9 @@
 {
 	"name": "com.gentlymadstudios.editorui",
-	"version": "0.1.2",
+	"version": "0.1.3",
 	"displayName": "EditorUI",
 	"description": "Editor UI by Gentlymad Studios.",
-	"unity": "2022.1",
-	"unityRelease": "16f1",
+	"unity": "2022.2",
 	"documentationUrl": "https://github.com/Gentlymad-Studios/EditorUI/blob/master/README.md",
 	"changelogUrl": "https://github.com/Gentlymad-Studios/EditorUI/blob/master/CHANGELOG.md",
 	"licensesUrl": "https://github.com/Gentlymad-Studios/EditorUI/blob/master/LICENSE.md",
