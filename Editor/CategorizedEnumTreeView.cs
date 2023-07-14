@@ -135,7 +135,7 @@ namespace CategorizedEnum {
         }
 
         private void FocusByName(string name) {
-            var selectedItem = enumItems.Find(_ => _.fullPath == name);
+            var selectedItem = enumItems.Find(_ => _.fullPath.ToLowerInvariant() == name.ToLowerInvariant());
 
             if (selectedItem != null) {
                 FrameItem(selectedItem.id);
