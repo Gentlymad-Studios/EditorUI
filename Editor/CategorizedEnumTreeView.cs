@@ -135,12 +135,10 @@ namespace CategorizedEnum {
         }
 
         private void FocusByName(string name) {
-
             var selectedItem = enumItems.Find(_ => _.fullPath == name);
 
-            //var selectedItem = enumItems.Find(_ => _.originalIndex == enumIndex);
             if (selectedItem != null) {
-                FrameItem(selectedItem.originalIndex);
+                FrameItem(selectedItem.id);
             }
         }
 
