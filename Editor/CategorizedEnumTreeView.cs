@@ -48,13 +48,17 @@ namespace CategorizedEnum {
             stylesInitialized = true;
         }
 
-        public CategorizedEnumTreeView(TreeViewState treeViewState, bool showFullPath, char delimiter, Action<int> onSelectionChanged, string[] enumNames, int currentEnumIndex) : base(treeViewState) {
+        public CategorizedEnumTreeView(TreeViewState treeViewState, bool showFullPath, char delimiter, Action<int> onSelectionChanged, string[] enumNames, int currentEnumIndex, string frameItem = "") : base(treeViewState) {
             this.enumNames = enumNames.ToList();
             this.onSelectionChanged = onSelectionChanged;
             this.delimiter = delimiter;
             this.showFullPath = showFullPath;
             Reload();
             SelectByEnumIndex(currentEnumIndex);
+
+            if (!string.IsNullOrEmpty(frameItem)) {
+                FocusByName(frameItem);
+            }
         }
 
         /// <summary>
@@ -128,6 +132,16 @@ namespace CategorizedEnum {
             }
             // update lastSearch reference
             lastSearch = searchString;
+        }
+
+        private void FocusByName(string name) {
+
+            var selectedItem = enumItems.Find(_ => _.fullPath == name);
+
+            //var selectedItem = enumItems.Find(_ => _.originalIndex == enumIndex);
+            if (selectedItem != null) {
+                FrameItem(selectedItem.originalIndex);
+            }
         }
 
         /// <summary>

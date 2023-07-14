@@ -35,7 +35,7 @@ namespace CategorizedEnum {
         /// <param name="enumNames">The string array of enum names.</param>
         /// <param name="currentEnumIndex">The currently selected index.</param>
         /// <param name="onSelectionChange">Action called when the selection changed.</param>
-        public CategorizedEnumPopup(char delimiter, bool showFullPath, string[] enumNames, int currentEnumIndex, Action<int> onSelectionChange, float windowWidth) {
+        public CategorizedEnumPopup(char delimiter, bool showFullPath, string[] enumNames, int currentEnumIndex, Action<int> onSelectionChange, float windowWidth, string frameItem = "") {
             firstRun = true;
 
             // Check if we already had a serialized view state (state 
@@ -45,7 +45,7 @@ namespace CategorizedEnum {
             }
 
             // create & setup the treeview
-            treeView = new CategorizedEnumTreeView(treeViewState, showFullPath, delimiter, onSelectionChange, enumNames, currentEnumIndex);
+            treeView = new CategorizedEnumTreeView(treeViewState, showFullPath, delimiter, onSelectionChange, enumNames, currentEnumIndex, frameItem);
 
             // setup the search field
             searchField = new SearchField();
@@ -63,8 +63,8 @@ namespace CategorizedEnum {
         /// <param name="enumNames">The string array of enum names.</param>
         /// <param name="currentEnumIndex">The currently selected index.</param>
         /// <param name="onSelectionChange">Action called when the selection changed.</param>
-        public static void Show(Rect rect, char delimiter, bool showFullPath, string[] enumNames, int currentEnumIndex, Action<int> onSelectionChange) {
-            CategorizedEnumPopup win = new CategorizedEnumPopup(delimiter, showFullPath, enumNames, currentEnumIndex, onSelectionChange, rect.width);
+        public static void Show(Rect rect, char delimiter, bool showFullPath, string[] enumNames, int currentEnumIndex, Action<int> onSelectionChange, string frameItem = "") {
+            CategorizedEnumPopup win = new CategorizedEnumPopup(delimiter, showFullPath, enumNames, currentEnumIndex, onSelectionChange, rect.width, frameItem);
             repaintAction = () => win.editorWindow.Repaint();
             PopupWindow.Show(rect, win);
         }
