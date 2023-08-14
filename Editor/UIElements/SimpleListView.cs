@@ -53,7 +53,7 @@ namespace EditorUI {
         public static VisualTreeAsset HandleBarsPartial {
             get {
                 if (_handleBarsPartial == null) {
-                    _handleBarsPartial = AssetDatabase.LoadAssetAtPath<VisualTreeAsset>(HANDLE_BARS_PARTIAL_GUID);
+                    _handleBarsPartial = AssetDatabase.LoadAssetAtPath<VisualTreeAsset>(AssetDatabase.GUIDToAssetPath(HANDLE_BARS_PARTIAL_GUID));
                 }
                 return _handleBarsPartial;
             }

@@ -33,3 +33,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [0.1.5] - 2023-07-14
 ### Added
 - categorizedEnumPopup can now frame items
+
+## [0.1.5] - 2023-08-14
+### Changed
+- fixed loading the uxml from guid
