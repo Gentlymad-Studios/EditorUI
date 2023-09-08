@@ -34,6 +34,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 - categorizedEnumPopup can now frame items
 
-## [0.1.5] - 2023-08-14
+## [0.1.6] - 2023-08-14
 ### Changed
 - fixed loading the uxml from guid
+
+## [0.1.7] - 2023-09-08
+### Changed
+- focus item now got some offset
+- searchfield get focus when open

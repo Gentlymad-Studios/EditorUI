@@ -139,6 +139,7 @@ namespace CategorizedEnum {
 
             if (selectedItem != null) {
                 FrameItem(selectedItem.id);
+                state.scrollPos.y -= 50;
             }
         }
 

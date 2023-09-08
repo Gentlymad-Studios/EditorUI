@@ -50,6 +50,7 @@ namespace CategorizedEnum {
             // setup the search field
             searchField = new SearchField();
             searchField.downOrUpArrowKeyPressed += treeView.SetFocus;
+            searchField.SetFocus();
 
             // set the window width that should be used.
             this.windowWidth = windowWidth;
