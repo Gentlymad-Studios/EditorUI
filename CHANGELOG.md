@@ -42,3 +42,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 - focus item now got some offset
 - searchfield get focus when open
+
+## [0.1.8] - 2023-09-19
+### Added
+- UIElementsHelper now got another version to create generic inspector for visualelements

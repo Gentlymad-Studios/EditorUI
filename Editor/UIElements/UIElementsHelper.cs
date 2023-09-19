@@ -1,6 +1,9 @@
 using System;
+using System.Collections.Generic;
+using System.Reflection;
 using UnityEditor;
 using UnityEditor.UIElements;
+using UnityEngine;
 using UnityEngine.UIElements;
 
 public static class UIElementsHelper {
@@ -65,6 +68,49 @@ public static class UIElementsHelper {
         root.Add(scrollView);
         ForEachProperty(ref scrollView);
 
+    }
+
+    /// <summary>
+    /// Create Generic UI for Visual Element -> https://forum.unity.com/threads/ui-elements-draw-default-inspector.773087/
+    /// </summary>
+    /// <param name="serializedObject"></param>
+    /// <param name="root">The UI root object.</param>
+    public static void CreateGenericUI(SerializedObject serializedObject, VisualElement root) {
+        SerializedProperty iterator = serializedObject.GetIterator();
+        Type targetType = serializedObject.targetObject.GetType();
+        List<MemberInfo> members = new List<MemberInfo>(targetType.GetMembers());
+
+        if (!iterator.NextVisible(true))
+            return;
+        do {
+            PropertyField propertyField = new PropertyField(iterator.Copy()) {
+                name = "PropertyField:" + iterator.propertyPath
+            };
+
+            MemberInfo member = members.Find(x => x.Name == propertyField.bindingPath);
+            if (member != null) {
+                IEnumerable<Attribute> headers = member.GetCustomAttributes(typeof(HeaderAttribute));
+                IEnumerable<Attribute> spaces = member.GetCustomAttributes(typeof(SpaceAttribute));
+
+                foreach (Attribute x in headers) {
+                    HeaderAttribute actual = (HeaderAttribute)x;
+                    Label header = new Label { text = actual.header };
+                    header.style.unityFontStyleAndWeight = FontStyle.Bold;
+                    root.Add(new Label { text = " ", name = "Header Spacer" });
+                    root.Add(header);
+                }
+                foreach (Attribute unused in spaces) {
+                    root.Add(new Label { text = " " });
+                }
+            }
+
+            if (iterator.propertyPath == "m_Script" && serializedObject.targetObject != null) {
+                propertyField.SetEnabled(value: false);
+            }
+
+            root.Add(propertyField);
+        }
+        while (iterator.NextVisible(false));
     }
 
     /// <summary>
