@@ -49,7 +49,7 @@ namespace CategorizedEnum {
 
             // setup the search field
             searchField = new SearchField();
-            searchField.downOrUpArrowKeyPressed += treeView.SetFocus;
+            searchField.downOrUpArrowKeyPressed += treeView.SetFocusAndEnsureSelectedItem;
             searchField.SetFocus();
 
             // set the window width that should be used.
@@ -130,6 +130,14 @@ namespace CategorizedEnum {
             if (firstRun) {
                 GUI.FocusControl("searchString");
                 firstRun = false;
+            }
+
+            // close window on pressing esc or enter (enter only when searchfield has no focus)
+            Event ev = Event.current;
+            if ((ev.type == EventType.KeyDown || ev.type == EventType.KeyUp) && (ev.keyCode == KeyCode.Escape || ev.keyCode == KeyCode.Return)) {
+                if (ev.keyCode != KeyCode.Return || !searchField.HasFocus()) {
+                    editorWindow.Close();
+                }
             }
         }
     }
