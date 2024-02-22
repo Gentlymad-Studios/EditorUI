@@ -5,8 +5,6 @@ using UnityEngine.UIElements;
 
 namespace EditorUI {
     public class ModalInputPopup : EditorWindow {
-        ModalInputPopup window;
-
         //Visual Elements
         TextField keyInput;
         Button okButton;
@@ -21,46 +19,8 @@ namespace EditorUI {
         string description;
         string okText;
         string cancelText;
-        string defaultValue = string.Empty;
+        string defaultValue;
         Func<string, bool> inputCheck;
-
-        public string Header {
-            set {
-                window.titleContent.text = value;
-            }
-        }
-        public string Description {
-            set {
-                description = value;
-            }
-        }
-        public string OkText {
-            set {
-                okText = value;
-            }
-        }
-        public string CancelText {
-            set {
-                cancelText = value;
-            }
-        }
-        public string DefaultValue {
-            set {
-                defaultValue = value;
-            }
-        }
-        public Func<string, bool> InputCheck {
-            set {
-                inputCheck = value;
-            }
-        }
-        public Vector2 WindowSize {
-            set {
-                window.minSize = value;
-                window.maxSize = value;
-                window.position = new Rect(EditorGUIUtility.GetMainWindowPosition().center - windowSize / 2, window.minSize);
-            }
-        }
 
         /// <summary>
         /// Create an Modal Input Popup
@@ -70,25 +30,23 @@ namespace EditorUI {
         /// <param name="okText">Text for the Ok Button</param>
         /// <param name="cancelText">Text for the Cancel Button</param>
         /// <param name="inputCheck">Function that should called on input change to check the typed string with</param>
-        public ModalInputPopup(string header, string description, string okText = "Ok", string cancelText = "Cancel", Func<string, bool> inputCheck = null) {
-            window = CreateInstance<ModalInputPopup>();
+        public static Result ShowModalPopup(string header, string description, string okText = "Ok", string cancelText = "Cancel", string defaultValue = "", Func<string, bool> inputCheck = null, Vector2? windowSize = null) {
+            ModalInputPopup window = CreateInstance<ModalInputPopup>();
             window.description = description;
             window.okText = okText;
             window.cancelText = cancelText;
             window.inputCheck = inputCheck;
-            window.maxSize = windowSize;
-            window.minSize = windowSize;
+            window.defaultValue = defaultValue;
+            if (windowSize != null) {
+                window.windowSize = windowSize.Value;
+            }
+            window.maxSize = window.windowSize;
+            window.minSize = window.windowSize;
             window.titleContent = new GUIContent(header);
-            window.position = new Rect(EditorGUIUtility.GetMainWindowPosition().center - windowSize / 2, windowSize);
-        }
+            window.position = new Rect(EditorGUIUtility.GetMainWindowPosition().center - window.windowSize / 2, window.windowSize);
+            window.ShowModalUtility();
 
-        /// <summary>
-        /// Opens the Popup and returns the Result
-        /// </summary>
-        /// <returns></returns>
-        public Result ShowModalPopup() {
-            ShowModalUtility();
-            return result;
+            return window.result;
         }
 
         void CreateGUI() {
