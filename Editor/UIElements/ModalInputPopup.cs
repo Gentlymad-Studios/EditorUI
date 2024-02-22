@@ -58,7 +58,8 @@ namespace EditorUI {
             Label descriptionLbl = new Label(description);
             descriptionLbl.style.marginLeft = 2;
 
-            keyInput = new TextField(defaultValue);
+            keyInput = new TextField();
+            keyInput.value = defaultValue;
             keyInput.RegisterValueChangedCallback((evt) => ValidateInput(evt.newValue));
             keyInput.RegisterCallback<KeyDownEvent>(e => {
                 if (e.keyCode == KeyCode.Return) {
